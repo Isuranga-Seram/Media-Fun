@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="581.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep13.fx.controller.MainSceneController">
+   <children>
+      <ImageView fx:id="imgVideoWindow" fitHeight="564.0" fitWidth="916.0" layoutX="1.0" onMouseDragged="#rootOnMouseDragged" onMousePressed="#rootOnMousePressed" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../image/mp4window.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="396.0" layoutY="5.0" text="Classic Media Player" textFill="WHITE" />
+      <ImageView fx:id="imgClose" fitHeight="29.0" fitWidth="32.0" layoutX="854.0" layoutY="14.0" onMouseClicked="#imgCloseOnMouseClicked" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/close.png" />
+         </image>
+      </ImageView>
+      <MediaView fx:id="mdPreview" fitHeight="320.0" fitWidth="550.0" layoutX="313.0" layoutY="53.0" onDragOver="#mdPreiviewOnDragOver" />
+      <Slider fx:id="sldrSeek" blockIncrement="0.05" layoutX="315.0" layoutY="379.0" max="1.0" onMouseReleased="#sldrSeekOnMouseReleased" prefHeight="16.0" prefWidth="550.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Slider>
+      <ImageView fx:id="imgVolume" fitHeight="36.0" fitWidth="29.0" layoutX="71.0" layoutY="327.0" onMouseClicked="#imgVolumeOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/volume1.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblSong" alignment="CENTER" contentDisplay="CENTER" layoutX="64.0" layoutY="103.0" prefHeight="43.0" prefWidth="210.0" text="The Song name display here" textAlignment="CENTER" textFill="#252525">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDuration" layoutX="136.0" layoutY="288.0" text="Not Loaded" textFill="#171717">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font></Label>
+      <Slider fx:id="sldrVolume" blockIncrement="0.1" layoutX="111.0" layoutY="334.0" max="1.0" value="0.3" />
+      <HBox alignment="CENTER" layoutX="47.0" layoutY="172.0" prefHeight="101.0" prefWidth="258.0" spacing="5.0">
+         <children>
+            <ImageView fx:id="imgPuase" fitHeight="67.0" fitWidth="54.0" onMouseClicked="#imgPauseOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/pause.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="imgPlay" fitHeight="81.0" fitWidth="91.0" onMouseClicked="#imgPlayOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/play.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="imgReset" fitHeight="67.0" fitWidth="54.0" onMouseClicked="#imgResetOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/reset.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="imgOpen" fitHeight="43.0" fitWidth="45.0" onMouseClicked="#imgOpenOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/open.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </HBox>
+      <Label fx:id="lblVolume" layoutX="258.0" layoutY="333.0" text="30%" />
+      <ImageView fx:id="imgMute" fitHeight="30.0" fitWidth="26.0" layoutX="72.0" layoutY="327.0" onMouseClicked="#imgMuteOnMouseClicked" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../image/volume2.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
