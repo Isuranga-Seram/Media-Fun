@@ -201,7 +201,7 @@ Make sure to check below dependencies are present in the POM.xml file.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-The Media Fun app you developed can have a variety of uses. Here are some of the main use cases:
+The Media Fun app have a variety of uses. Here are some of the main use cases:
 
 1. Personal Media Playback
 2. Educational Tool for Learning Media Playback
