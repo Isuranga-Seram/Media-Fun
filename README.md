@@ -134,7 +134,7 @@ The project is designed using JavaFX for building the graphical user interface (
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Here are the major frameworks/libraries used to bootstrap the application. Java language is used for the programming and the JavaFx and SceneBuilder are used for interface designing part.
 
 ![java-url]
 <br><br>
@@ -197,7 +197,7 @@ Developed and maintained an audio/video media player as a solo project. This inc
 <!-- Version -->
 ## Version
 
-1.0.0
+0.0.1
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
