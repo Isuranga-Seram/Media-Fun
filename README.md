@@ -165,6 +165,35 @@ _Below is an example of how you can installing and setting up your app._
    git remote -v # confirm the changes
    ```
 
+<br>
+
+### Dependencies
+Make sure to check below dependencies are present in the POM.xml file.
+<br>
+```
+<dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>23</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>23</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>23</version>
+        </dependency>
+    </dependencies>
+```
+
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <hr>

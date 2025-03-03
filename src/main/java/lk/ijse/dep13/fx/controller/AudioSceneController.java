@@ -204,13 +204,6 @@ public class AudioSceneController {
     }
 
     public void imgOpenOnMouseClicked(MouseEvent event) throws IOException {
-        /*FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open a file");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Audio Files", "*.mp3"));
-        File file = fileChooser.showOpenDialog(root.getScene().getWindow());
-        if (file != null) {
-            loadMedia(file.toURI().toString());
-        }*/
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a file");
