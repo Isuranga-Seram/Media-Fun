@@ -17,8 +17,11 @@
             <Image url="@../image/mp4window.png" />
          </image>
       </ImageView>
-      <Label layoutX="426.0" layoutY="5.0" text="Media Fun" textFill="WHITE" />
-      <ImageView fx:id="imgClose" fitHeight="29.0" fitWidth="32.0" layoutX="854.0" layoutY="14.0" onMouseClicked="#imgCloseOnMouseClicked" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="426.0" layoutY="5.0" text="Media Fun" textFill="#2f2a90">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <ImageView fx:id="imgClose" fitHeight="29.0" fitWidth="32.0" layoutX="854.0" layoutY="14.0" onMouseClicked="#imgCloseOnMouseClicked" onMouseEntered="#imgCloseOnMouseEntered" onMouseExited="#imgCloseOnMouseExited" opacity="0.6" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/close.png" />
          </image>
@@ -35,7 +38,7 @@
       </ImageView>
       <Label fx:id="lblSong" alignment="CENTER" contentDisplay="CENTER" layoutX="64.0" layoutY="103.0" prefHeight="43.0" prefWidth="210.0" text="The Song name display here" textAlignment="CENTER" textFill="#252525">
          <font>
-            <Font size="17.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Label fx:id="lblDuration" layoutX="136.0" layoutY="288.0" text="Not Loaded" textFill="#171717">
@@ -45,7 +48,7 @@
       <Slider fx:id="sldrVolume" blockIncrement="0.1" layoutX="111.0" layoutY="334.0" max="1.0" value="0.3" />
       <HBox alignment="CENTER" layoutX="47.0" layoutY="172.0" prefHeight="101.0" prefWidth="258.0" spacing="5.0">
          <children>
-            <ImageView fx:id="imgPuase" fitHeight="67.0" fitWidth="54.0" onMouseClicked="#imgPauseOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgPuase" fitHeight="67.0" fitWidth="54.0" onMouseClicked="#imgPauseOnMouseClicked" onMouseEntered="#imgPuaseOnMouseEntered" onMouseExited="#imgPuaseOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/pause.png" />
                </image>
@@ -53,7 +56,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="imgPlay" fitHeight="81.0" fitWidth="91.0" onMouseClicked="#imgPlayOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgPlay" fitHeight="81.0" fitWidth="91.0" onMouseClicked="#imgPlayOnMouseClicked" onMouseEntered="#imgPlayOnMouseEntered" onMouseExited="#imgPlayOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/play.png" />
                </image>
@@ -61,7 +64,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="imgReset" fitHeight="67.0" fitWidth="54.0" onMouseClicked="#imgResetOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgReset" fitHeight="67.0" fitWidth="54.0" onMouseClicked="#imgResetOnMouseClicked" onMouseEntered="#imgResetOnMouseEntered" onMouseExited="#imgResetOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/reset.png" />
                </image>
@@ -69,7 +72,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="imgOpen" fitHeight="43.0" fitWidth="45.0" onMouseClicked="#imgOpenOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgOpen" fitHeight="43.0" fitWidth="45.0" onMouseClicked="#imgOpenOnMouseClicked" onMouseEntered="#imgOpenOnMouseEntered" onMouseExited="#imgOpenOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/open.png" />
                </image>
@@ -79,7 +82,10 @@
             </ImageView>
          </children>
       </HBox>
-      <Label fx:id="lblVolume" layoutX="258.0" layoutY="333.0" text="30%" />
+      <Label fx:id="lblVolume" layoutX="258.0" layoutY="333.0" text="30%">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
       <ImageView fx:id="imgMute" fitHeight="30.0" fitWidth="26.0" layoutX="72.0" layoutY="327.0" onMouseClicked="#imgMuteOnMouseClicked" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../image/volume2.png" />

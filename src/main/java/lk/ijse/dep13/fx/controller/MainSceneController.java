@@ -2,11 +2,9 @@ package lk.ijse.dep13.fx.controller;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -206,5 +204,75 @@ public class MainSceneController {
             isSeeking = false; // Reset flag after seeking
             mediaPlayer.seek(Duration.millis(seekValue)); // Seek to the specified position
         });
+    }
+
+    public void imgPlayOnMouseEntered(MouseEvent mouseEvent) {
+        imgPlay.setOpacity(0.85);
+        DropShadow glow = new DropShadow();
+        glow.setColor(Color.AQUA);
+        glow.setRadius(10);
+        glow.setSpread(0.5);
+        imgPlay.setEffect(glow);
+    }
+
+    public void imgPlayOnMouseExited(MouseEvent mouseEvent) {
+        imgPlay.setOpacity(1.0);
+        imgPlay.setEffect(null);
+    }
+
+    public void imgPuaseOnMouseEntered(MouseEvent mouseEvent) {
+        imgPuase.setOpacity(0.85);
+        DropShadow glow = new DropShadow();
+        glow.setColor(Color.AQUA);
+        glow.setRadius(10);
+        glow.setSpread(0.5);
+        imgPuase.setEffect(glow);
+    }
+
+    public void imgPuaseOnMouseExited(MouseEvent mouseEvent) {
+        imgPuase.setOpacity(1.0);
+        imgPuase.setEffect(null);
+    }
+
+    public void imgResetOnMouseEntered(MouseEvent mouseEvent) {
+        imgReset.setOpacity(0.85);
+        DropShadow glow = new DropShadow();
+        glow.setColor(Color.AQUA);
+        glow.setRadius(10);
+        glow.setSpread(0.5);
+        imgReset.setEffect(glow);
+    }
+
+    public void imgResetOnMouseExited(MouseEvent mouseEvent) {
+        imgReset.setOpacity(1.0);
+        imgReset.setEffect(null);
+    }
+
+    public void imgOpenOnMouseEntered(MouseEvent mouseEvent) {
+        imgOpen.setOpacity(0.85);
+        DropShadow glow = new DropShadow();
+        glow.setColor(Color.AQUA);
+        glow.setRadius(10);
+        glow.setSpread(0.5);
+        imgOpen.setEffect(glow);
+    }
+
+    public void imgOpenOnMouseExited(MouseEvent mouseEvent) {
+        imgOpen.setOpacity(1.0);
+        imgOpen.setEffect(null);
+    }
+
+    public void imgCloseOnMouseEntered(MouseEvent mouseEvent) {
+        imgClose.setOpacity(0.85);
+        DropShadow glow = new DropShadow();
+        glow.setColor(Color.DARKRED);
+        glow.setRadius(10);
+        glow.setSpread(0.5);
+        imgClose.setEffect(glow);
+    }
+
+    public void imgCloseOnMouseExited(MouseEvent mouseEvent) {
+        imgClose.setOpacity(1.0);
+        imgClose.setEffect(null);
     }
 }
