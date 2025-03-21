@@ -17,7 +17,7 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.AUDIO));
+        Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.VIDEO));
         scene.setFill(Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(scene);

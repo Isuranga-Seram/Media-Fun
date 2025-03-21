@@ -117,7 +117,7 @@ public class AudioSceneController {
 
     public void imgOpenOnMouseClicked(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav", "*.flv", "*.aac"));
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
             loadMedia(file.toURI().toString());

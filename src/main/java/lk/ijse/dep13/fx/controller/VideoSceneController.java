@@ -1,6 +1,7 @@
 package lk.ijse.dep13.fx.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.effect.DropShadow;
@@ -15,8 +16,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.dep13.fx.util.AppRouter;
 
 import java.io.File;
+import java.io.IOException;
 
 public class VideoSceneController {
     @FXML public ImageView imgClose, imgOpen, imgPlay, imgPause, imgReset, imgVolume, imgMute, imgVideoWindow;
@@ -113,13 +116,53 @@ public class VideoSceneController {
         mediaPlayer.play();
     }
 
-    public void imgOpenOnMouseClicked(MouseEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav"));
+    public void imgOpenOnMouseClicked(MouseEvent event) throws IOException {
+        /*FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav", "*.flv", "*.aac"));
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
             loadMedia(file.toURI().toString());
+        }*/
+
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav", "*.flv", "*.aac"));
+
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null && !file.getName().endsWith(".mp3")) {
+            loadMedia(file.toURI().toString());
+        } else {
+            Stage stage = (Stage) imgOpen.getScene().getWindow();
+            Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.AUDIO));
+            stage.setScene(scene);
+            scene.setFill(Color.TRANSPARENT);
         }
+
+
+
+
+        /*FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp3"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4"));
+
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            String filePath = file.toURI().toString();
+            if (file.getName().endsWith(".mp3")) {
+                Stage stage = (Stage) imgOpen.getScene().getWindow();
+                Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.AUDIO));
+                stage.setScene(scene);
+                scene.setFill(Color.TRANSPARENT);
+
+                Media media = new Media(filePath);
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.play();
+            }
+            else if (file.getName().endsWith(".mp4")) {
+                loadMedia(filePath);
+            }
+        }*/
     }
 
     public void imgPlayOnMouseClicked(MouseEvent event) {

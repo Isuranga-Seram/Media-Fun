@@ -10,7 +10,7 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="581.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep13.fx.controller.VideoSceneController">
+<AnchorPane fx:id="root" prefHeight="530.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep13.fx.controller.VideoSceneController">
    <children>
       <ImageView fx:id="imgVideoWindow" fitHeight="564.0" fitWidth="916.0" layoutX="1.0" onMouseDragged="#imgVideoWindowOnMouseDragged" onMousePressed="#imgVideoWindowOnMousePressed" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
