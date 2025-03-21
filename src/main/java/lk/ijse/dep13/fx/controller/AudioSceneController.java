@@ -140,6 +140,7 @@ public class AudioSceneController {
         if (mediaPlayer != null) {
             mediaPlayer.seek(Duration.ZERO);
             mediaPlayer.pause();
+            sldrSeek.setValue(0);
         }
     }
 

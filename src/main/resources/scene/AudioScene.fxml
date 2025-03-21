@@ -17,7 +17,7 @@
             <Image url="@../image/mp3window.png" />
          </image>
       </ImageView>
-      <Label layoutX="396.0" layoutY="6.0" text="Media Fun Player" textFill="#5a587c">
+      <Label layoutX="396.0" layoutY="6.0" text="Media Fun Player" textFill="#4b6b97">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
@@ -30,7 +30,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Slider>
-      <Label fx:id="lblSong" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="45.0" prefHeight="43.0" prefWidth="598.0" text="The Song name display here" textAlignment="CENTER" textFill="#4f4f4f">
+      <Label fx:id="lblSong" contentDisplay="CENTER" layoutX="76.0" layoutY="45.0" prefHeight="43.0" prefWidth="593.0" text="The Song name display here" textAlignment="CENTER" textFill="#4f4f4f">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
@@ -81,7 +81,7 @@
             <Image url="@../image/icon.png" />
          </image>
       </ImageView>
-      <MediaView fx:id="mdPreview" fitHeight="60.0" fitWidth="600.0" layoutX="70.0" layoutY="37.0" onMouseDragged="#mdPreviewOnMouseDragged" onMousePressed="#mdPreviewOnMousePressed" />
+      <MediaView fx:id="mdPreview" fitHeight="60.0" fitWidth="600.0" layoutX="73.0" layoutY="37.0" onMouseDragged="#mdPreviewOnMouseDragged" onMousePressed="#mdPreviewOnMousePressed" />
       <Label fx:id="lblVolume" layoutX="643.0" layoutY="150.0" text="30%" textFill="#5f5c8d">
          <font>
             <Font name="System Bold" size="14.0" />
