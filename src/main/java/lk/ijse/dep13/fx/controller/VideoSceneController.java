@@ -27,8 +27,7 @@ public class VideoSceneController {
 
     private MediaPlayer mediaPlayer;
     private boolean isSeeking = false;
-    private boolean isMuted = false;
-    private double vlm = 50; // Default volume value
+    private double vlm = 50;
 
     public void initialize() {
         setupDragAndDrop();
@@ -116,7 +115,7 @@ public class VideoSceneController {
 
     public void imgOpenOnMouseClicked(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mp3", "*.wav"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav"));
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
             loadMedia(file.toURI().toString());
