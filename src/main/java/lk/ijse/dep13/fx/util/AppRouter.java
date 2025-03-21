@@ -11,13 +11,13 @@ import java.io.IOException;
 
 public class AppRouter {
     public enum Routes{
-        MAIN,AUDIO,
+        VIDEO,AUDIO,
     }
 
     public static AnchorPane getContainer (Routes route) throws IOException {
         AnchorPane container = null;
-        if (route == Routes.MAIN){
-            container = FXMLLoader.load(AppRouter.class.getResource("/scene/MainScene.fxml"));
+        if (route == Routes.VIDEO){
+            container = FXMLLoader.load(AppRouter.class.getResource("/scene/VideoScene.fxml"));
             container.setBackground(Background.fill(Color.TRANSPARENT));
         }else if (route == Routes.AUDIO){
             container = FXMLLoader.load(AppRouter.class.getResource("/scene/AudioScene.fxml"));

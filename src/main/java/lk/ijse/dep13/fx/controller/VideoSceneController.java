@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
@@ -19,7 +18,7 @@ import javafx.util.Duration;
 
 import java.io.File;
 
-public class MainSceneController {
+public class VideoSceneController {
     @FXML public ImageView imgClose, imgOpen, imgPlay, imgPause, imgReset, imgVolume, imgMute, imgVideoWindow;
     @FXML public Label lblSong, lblDuration, lblVolume;
     @FXML public MediaView mdPreview;
@@ -235,16 +234,41 @@ public class MainSceneController {
         imgClose.setEffect(null);
     }
 
+
+    // Move the window
     double mouseX, mouseY;
-    public void imgVideoWindowOnMouseDragged(MouseEvent mouseEvent) {
+    private void onMouseDragged(MouseEvent mouseEvent) {
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setX(mouseEvent.getScreenX() - mouseX);
         stage.setY(mouseEvent.getScreenY() - mouseY);
     }
-
-    public void imgVideoWindowOnMousePressed(MouseEvent mouseEvent) {
+    private void onMousePressed(MouseEvent mouseEvent) {
         mouseX = mouseEvent.getSceneX();
         mouseY = mouseEvent.getSceneY();
+    }
+
+    public void imgVideoWindowOnMouseDragged(MouseEvent mouseEvent) {
+        onMouseDragged(mouseEvent);
+    }
+
+    public void imgVideoWindowOnMousePressed(MouseEvent mouseEvent) {
+        onMousePressed(mouseEvent);
+    }
+
+    public void mdPreviewOnMouseDragged(MouseEvent mouseEvent) {
+        onMouseDragged(mouseEvent);
+    }
+
+    public void mdPreviewOnMousePressed(MouseEvent mouseEvent) {
+        onMousePressed(mouseEvent);
+    }
+
+    public void lblSongOnMouseDragged(MouseEvent mouseEvent) {
+        onMouseDragged(mouseEvent);
+    }
+
+    public void lblSongOnMousePressed(MouseEvent mouseEvent) {
+        onMousePressed(mouseEvent);
     }
 }
 

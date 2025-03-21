@@ -1,10 +1,7 @@
 package lk.ijse.dep13.fx;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -20,7 +17,7 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.MAIN));
+        Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.VIDEO));
         scene.setFill(Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(scene);

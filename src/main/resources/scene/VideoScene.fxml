@@ -10,7 +10,7 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="581.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep13.fx.controller.MainSceneController">
+<AnchorPane fx:id="root" prefHeight="581.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep13.fx.controller.VideoSceneController">
    <children>
       <ImageView fx:id="imgVideoWindow" fitHeight="564.0" fitWidth="916.0" layoutX="1.0" onMouseDragged="#imgVideoWindowOnMouseDragged" onMousePressed="#imgVideoWindowOnMousePressed" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -28,7 +28,7 @@
       </ImageView>
       <AnchorPane layoutX="313.0" layoutY="53.0" style="-fx-background-color: #232323;">
          <children>
-            <MediaView fx:id="mdPreview" fitHeight="320.0" fitWidth="550.0" />
+            <MediaView fx:id="mdPreview" fitHeight="320.0" fitWidth="550.0" onMouseDragged="#mdPreviewOnMouseDragged" onMousePressed="#mdPreviewOnMousePressed" />
          </children>
       </AnchorPane>
       <Slider fx:id="sldrSeek" blockIncrement="0.05" layoutX="315.0" layoutY="379.0" max="1.0" onMouseReleased="#sldrSeekOnMouseReleased" prefHeight="16.0" prefWidth="449.0" style="-fx-background-color: lightblue;">
@@ -40,7 +40,7 @@
             <Image url="@../image/volume1.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblSong" alignment="CENTER" contentDisplay="CENTER" layoutX="64.0" layoutY="87.0" prefHeight="69.0" prefWidth="222.0" text="The Song name display here" textFill="#393939" wrapText="true">
+      <Label fx:id="lblSong" alignment="CENTER" layoutX="50.0" layoutY="67.0" maxWidth="220.0" onMouseDragged="#lblSongOnMouseDragged" onMousePressed="#lblSongOnMousePressed" prefHeight="100.0" prefWidth="220.0" text="The Song name display here.." textFill="#393939" wrapText="true">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

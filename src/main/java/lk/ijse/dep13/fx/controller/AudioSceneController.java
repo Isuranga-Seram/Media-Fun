@@ -219,7 +219,7 @@ public class AudioSceneController {
                 (fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Video Files", "*.mkv"))) ||
                 (fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Video Files", "*.wav")))){
             Stage stage = (Stage) imgOpen.getScene().getWindow();
-            Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.MAIN));
+            Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.VIDEO));
             stage.setScene(scene);
             scene.setFill(Color.TRANSPARENT);
         }
