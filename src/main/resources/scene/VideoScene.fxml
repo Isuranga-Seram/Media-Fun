@@ -40,7 +40,7 @@
             <Image url="@../image/volume1.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblSong" alignment="CENTER" layoutX="53.0" layoutY="69.0" maxWidth="258.0" onMouseDragged="#lblSongOnMouseDragged" onMousePressed="#lblSongOnMousePressed" prefHeight="121.0" prefWidth="258.0" text="The Song name display here.." textFill="#393939" wrapText="true">
+      <Label fx:id="lblSong" alignment="CENTER" layoutX="53.0" layoutY="69.0" maxWidth="258.0" onMouseDragged="#lblSongOnMouseDragged" onMousePressed="#lblSongOnMousePressed" prefHeight="121.0" prefWidth="258.0" text="-- Video title display here --" textFill="#393939" wrapText="true">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

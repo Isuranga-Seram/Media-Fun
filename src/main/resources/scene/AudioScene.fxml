@@ -17,7 +17,7 @@
             <Image url="@../image/mp3window.png" />
          </image>
       </ImageView>
-      <Label layoutX="396.0" layoutY="6.0" text="Media Fun Player" textFill="#4b6b97">
+      <Label layoutX="396.0" layoutY="6.0" text="Media Fun Player" textFill="#838d9a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
@@ -30,7 +30,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Slider>
-      <Label fx:id="lblSong" contentDisplay="CENTER" layoutX="76.0" layoutY="45.0" prefHeight="43.0" prefWidth="593.0" text="The Song name display here" textAlignment="CENTER" textFill="#4f4f4f">
+      <Label fx:id="lblSong" contentDisplay="CENTER" layoutX="76.0" layoutY="45.0" prefHeight="43.0" prefWidth="593.0" text="-- Audio title display here --" textAlignment="CENTER" textFill="#4f4f4f">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
