@@ -21,14 +21,13 @@ import lk.ijse.dep13.fx.util.AppRouter;
 import java.io.File;
 import java.io.IOException;
 
-public class AudioSceneController {
+public class VideoSceneController {
     @FXML public ImageView imgClose, imgOpen, imgPlay, imgPause, imgReset, imgVolume, imgMute, imgVideoWindow;
     @FXML public Label lblSong, lblDuration, lblVolume;
     @FXML public MediaView mdPreview;
     @FXML public AnchorPane root;
     @FXML public Slider sldrSeek, sldrVolume;
-    public ImageView imgFolder;
-    public ImageView imgAudioWindow;
+
     private MediaPlayer mediaPlayer;
     private boolean isSeeking = false;
     private double vlm = 50;
@@ -52,12 +51,6 @@ public class AudioSceneController {
                 imgVolume.setVisible(true);
             }
         });
-    }
-
-    private String formatTime(Duration duration) {
-        int minutes = (int) duration.toMinutes();
-        int seconds = (int) (duration.toSeconds() % 60);
-        return String.format("%02d:%02d", minutes, seconds);
     }
 
     void loadMedia(String mediaUrl) {
@@ -87,36 +80,6 @@ public class AudioSceneController {
         mediaPlayer.play();
     }
 
-    public void imgOpenOnMouseClicked(MouseEvent event) throws IOException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav", "*.flv", "*.aac"));
-
-        File file = fileChooser.showOpenDialog(null);
-        if (file != null) {
-            if (!file.getName().endsWith(".mp4") &&
-                    !file.getName().endsWith(".mkv") &&
-                    !file.getName().endsWith(".avi") &&
-                    !file.getName().endsWith(".wmv") &&
-                    !file.getName().endsWith(".webm")) {
-                loadMedia(file.toURI().toString());
-            } else {
-                if (mediaPlayer != null) {
-                    mediaPlayer.stop();
-                    mediaPlayer.dispose();
-                }
-                Stage stage = (Stage) imgOpen.getScene().getWindow();
-                Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.VIDEO));
-                stage.setScene(scene);
-                scene.setFill(Color.TRANSPARENT);
-
-                VideoSceneController videoController = (VideoSceneController) AppRouter.getController(AppRouter.Routes.VIDEO);
-                if (videoController != null) {
-                    Platform.runLater(() -> videoController.loadMedia(file.toURI().toString()));
-                }
-            }
-        }
-    }
-
     private void setupDragAndDrop() {
         root.setOnDragOver(event -> {
             if (event.getDragboard().hasFiles()) {
@@ -135,15 +98,20 @@ public class AudioSceneController {
         });
     }
 
+    private String formatTime(Duration duration) {
+        int minutes = (int) duration.toMinutes();
+        int seconds = (int) (duration.toSeconds() % 60);
+        return String.format("%02d:%02d", minutes, seconds);
+    }
+
     private void handleDragDropped(DragEvent event) throws IOException {
         File file = event.getDragboard().getFiles().get(0);
         loadMedia(file.toURI().toString());
         if (file != null) {
-            if (!file.getName().endsWith(".mp4") &&
-                    !file.getName().endsWith(".mkv") &&
-                    !file.getName().endsWith(".avi") &&
-                    !file.getName().endsWith(".wmv") &&
-                    !file.getName().endsWith(".webm")) {
+            if (!file.getName().endsWith(".mp3") &&
+                    !file.getName().endsWith(".wav") &&
+                    !file.getName().endsWith(".flv") &&
+                    !file.getName().endsWith(".aac")) {
                 loadMedia(file.toURI().toString());
             } else {
                 if (mediaPlayer != null) {
@@ -151,13 +119,42 @@ public class AudioSceneController {
                     mediaPlayer.dispose();
                 }
                 Stage stage = (Stage) imgOpen.getScene().getWindow();
-                Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.VIDEO));
+                Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.AUDIO));
                 stage.setScene(scene);
                 scene.setFill(Color.TRANSPARENT);
 
-                VideoSceneController videoController = (VideoSceneController) AppRouter.getController(AppRouter.Routes.VIDEO);
-                if (videoController != null) {
-                    Platform.runLater(() -> videoController.loadMedia(file.toURI().toString()));
+                AudioSceneController audioController = (AudioSceneController) AppRouter.getController(AppRouter.Routes.AUDIO);
+                if (audioController != null) {
+                    Platform.runLater(() -> audioController.loadMedia(file.toURI().toString()));
+                }
+            }
+        }
+    }
+
+    public void imgOpenOnMouseClicked(MouseEvent event) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav", "*.flv", "*.aac"));
+
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            if (!file.getName().endsWith(".mp3") &&
+                    !file.getName().endsWith(".wav") &&
+                    !file.getName().endsWith(".flv") &&
+                    !file.getName().endsWith(".aac")) {
+                loadMedia(file.toURI().toString());
+            } else {
+                if (mediaPlayer != null) {
+                    mediaPlayer.stop();
+                    mediaPlayer.dispose();
+                }
+                Stage stage = (Stage) imgOpen.getScene().getWindow();
+                Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.AUDIO));
+                stage.setScene(scene);
+                scene.setFill(Color.TRANSPARENT);
+
+                AudioSceneController audioController = (AudioSceneController) AppRouter.getController(AppRouter.Routes.AUDIO);
+                if (audioController != null) {
+                    Platform.runLater(() -> audioController.loadMedia(file.toURI().toString()));
                 }
             }
         }
@@ -298,11 +295,11 @@ public class AudioSceneController {
         mouseY = mouseEvent.getSceneY();
     }
 
-    public void imgAudioWindowOnMouseDragged(MouseEvent mouseEvent) {
+    public void imgVideoWindowOnMouseDragged(MouseEvent mouseEvent) {
         onMouseDragged(mouseEvent);
     }
 
-    public void imgAudioWindowOnMousePressed(MouseEvent mouseEvent) {
+    public void imgVideoWindowOnMousePressed(MouseEvent mouseEvent) {
         onMousePressed(mouseEvent);
     }
 
@@ -314,11 +311,11 @@ public class AudioSceneController {
         onMousePressed(mouseEvent);
     }
 
-    public void imgFolderOnMouseDragged(MouseEvent mouseEvent) {
+    public void lblSongOnMouseDragged(MouseEvent mouseEvent) {
         onMouseDragged(mouseEvent);
     }
 
-    public void imgFolderOnMousePressed(MouseEvent mouseEvent) {
+    public void lblSongOnMousePressed(MouseEvent mouseEvent) {
         onMousePressed(mouseEvent);
     }
 }
