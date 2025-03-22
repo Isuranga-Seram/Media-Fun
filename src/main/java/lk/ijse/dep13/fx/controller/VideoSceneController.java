@@ -90,7 +90,7 @@ public class VideoSceneController {
         loadMedia(file.toURI().toString());
     }
 
-    private void loadMedia(String mediaUrl) {
+    void loadMedia(String mediaUrl) {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.dispose();
@@ -137,6 +137,8 @@ public class VideoSceneController {
                     !file.getName().endsWith(".aac")) {
                 loadMedia(file.toURI().toString());
             } else {
+                mediaPlayer.stop();
+                mediaPlayer.dispose();
                 Stage stage = (Stage) imgOpen.getScene().getWindow();
                 Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.AUDIO));
                 stage.setScene(scene);
@@ -145,8 +147,6 @@ public class VideoSceneController {
                 AudioSceneController audioController = (AudioSceneController) AppRouter.getController(AppRouter.Routes.AUDIO);
                 if (audioController != null) {
                     Platform.runLater(() -> audioController.loadMedia(file.toURI().toString()));
-                } else {
-                    System.out.println("Error: AudioSceneController is null");
                 }
             }
         }

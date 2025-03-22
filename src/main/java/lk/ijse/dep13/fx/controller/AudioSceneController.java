@@ -1,6 +1,8 @@
 package lk.ijse.dep13.fx.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.effect.DropShadow;
@@ -15,7 +17,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.dep13.fx.util.AppRouter;
+
 import java.io.File;
+import java.io.IOException;
 
 public class AudioSceneController {
     @FXML
@@ -115,12 +120,38 @@ public class AudioSceneController {
         mediaPlayer.play();
     }
 
-    public void imgOpenOnMouseClicked(MouseEvent event) {
-        FileChooser fileChooser = new FileChooser();
+    public void imgOpenOnMouseClicked(MouseEvent event) throws IOException {
+        /*FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav", "*.flv", "*.aac"));
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
             loadMedia(file.toURI().toString());
+        }*/
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav", "*.flv", "*.aac"));
+
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            if (!file.getName().endsWith(".mp4") &&
+                    !file.getName().endsWith(".mkv") &&
+                    !file.getName().endsWith(".avi") &&
+                    !file.getName().endsWith(".wmv") &&
+                    !file.getName().endsWith(".webm")) {
+                loadMedia(file.toURI().toString());
+            } else {
+                mediaPlayer.stop();
+                mediaPlayer.dispose();
+                Stage stage = (Stage) imgOpen.getScene().getWindow();
+                Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.VIDEO));
+                stage.setScene(scene);
+                scene.setFill(Color.TRANSPARENT);
+
+                VideoSceneController videoController = (VideoSceneController) AppRouter.getController(AppRouter.Routes.VIDEO);
+                if (videoController != null) {
+                    Platform.runLater(() -> videoController.loadMedia(file.toURI().toString()));
+                }
+            }
         }
     }
 
