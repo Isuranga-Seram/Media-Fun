@@ -88,7 +88,7 @@ public class AudioSceneController {
         loadMedia(file.toURI().toString());
     }
 
-    private void loadMedia(String mediaUrl) {
+    void loadMedia(String mediaUrl) {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.dispose();
