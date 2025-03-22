@@ -67,6 +67,12 @@ public class VideoSceneController {
         });
     }
 
+    private String formatTime(Duration duration) {
+        int minutes = (int) duration.toMinutes();
+        int seconds = (int) (duration.toSeconds() % 60);
+        return String.format("%02d:%02d", minutes, seconds);
+    }
+
     void loadMedia(String mediaUrl) {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -111,8 +117,10 @@ public class VideoSceneController {
                     !file.getName().endsWith(".aac")) {
                 loadMedia(file.toURI().toString());
             } else {
-                mediaPlayer.stop();
-                mediaPlayer.dispose();
+                if (mediaPlayer != null) {
+                    mediaPlayer.stop();
+                    mediaPlayer.dispose();
+                }
                 Stage stage = (Stage) imgOpen.getScene().getWindow();
                 Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.AUDIO));
                 stage.setScene(scene);
@@ -175,12 +183,6 @@ public class VideoSceneController {
         if (mediaPlayer != null) {
             mediaPlayer.seek(Duration.seconds(sldrSeek.getValue()));
         }
-    }
-
-    private String formatTime(Duration duration) {
-        int minutes = (int) duration.toMinutes();
-        int seconds = (int) (duration.toSeconds() % 60);
-        return String.format("%02d:%02d", minutes, seconds);
     }
 
 
