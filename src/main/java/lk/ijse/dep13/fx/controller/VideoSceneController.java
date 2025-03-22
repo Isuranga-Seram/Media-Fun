@@ -53,26 +53,6 @@ public class VideoSceneController {
         });
     }
 
-    private void setupDragAndDrop() {
-        root.setOnDragOver(event -> {
-            if (event.getDragboard().hasFiles()) {
-                event.acceptTransferModes(javafx.scene.input.TransferMode.COPY);
-            }
-            event.consume();
-        });
-
-        root.setOnDragDropped(event -> {
-            handleDragDropped(event);
-            event.consume();
-        });
-    }
-
-    private String formatTime(Duration duration) {
-        int minutes = (int) duration.toMinutes();
-        int seconds = (int) (duration.toSeconds() % 60);
-        return String.format("%02d:%02d", minutes, seconds);
-    }
-
     void loadMedia(String mediaUrl) {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -100,9 +80,55 @@ public class VideoSceneController {
         mediaPlayer.play();
     }
 
-    private void handleDragDropped(DragEvent event) {
+    private void setupDragAndDrop() {
+        root.setOnDragOver(event -> {
+            if (event.getDragboard().hasFiles()) {
+                event.acceptTransferModes(javafx.scene.input.TransferMode.COPY);
+            }
+            event.consume();
+        });
+
+        root.setOnDragDropped(event -> {
+            try {
+                handleDragDropped(event);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            event.consume();
+        });
+    }
+
+    private String formatTime(Duration duration) {
+        int minutes = (int) duration.toMinutes();
+        int seconds = (int) (duration.toSeconds() % 60);
+        return String.format("%02d:%02d", minutes, seconds);
+    }
+
+    private void handleDragDropped(DragEvent event) throws IOException {
         File file = event.getDragboard().getFiles().get(0);
         loadMedia(file.toURI().toString());
+        if (file != null) {
+            if (!file.getName().endsWith(".mp3") &&
+                    !file.getName().endsWith(".wav") &&
+                    !file.getName().endsWith(".flv") &&
+                    !file.getName().endsWith(".aac")) {
+                loadMedia(file.toURI().toString());
+            } else {
+                if (mediaPlayer != null) {
+                    mediaPlayer.stop();
+                    mediaPlayer.dispose();
+                }
+                Stage stage = (Stage) imgOpen.getScene().getWindow();
+                Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.AUDIO));
+                stage.setScene(scene);
+                scene.setFill(Color.TRANSPARENT);
+
+                AudioSceneController audioController = (AudioSceneController) AppRouter.getController(AppRouter.Routes.AUDIO);
+                if (audioController != null) {
+                    Platform.runLater(() -> audioController.loadMedia(file.toURI().toString()));
+                }
+            }
+        }
     }
 
     public void imgOpenOnMouseClicked(MouseEvent event) throws IOException {
