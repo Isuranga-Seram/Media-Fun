@@ -215,7 +215,6 @@ public class AudioSceneController {
     }
 
 
-
     public void imgPlayOnMouseEntered(MouseEvent mouseEvent) {
         imgPlay.setOpacity(0.85);
         DropShadow glow = new DropShadow();

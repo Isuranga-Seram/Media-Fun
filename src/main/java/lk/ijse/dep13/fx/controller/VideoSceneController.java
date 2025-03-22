@@ -212,7 +212,6 @@ public class VideoSceneController {
     }
 
 
-
     public void imgPlayOnMouseEntered(MouseEvent mouseEvent) {
         imgPlay.setOpacity(0.85);
         DropShadow glow = new DropShadow();
