@@ -126,14 +126,41 @@ public class AudioSceneController {
         });
 
         root.setOnDragDropped(event -> {
-            handleDragDropped(event);
+            try {
+                handleDragDropped(event);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             event.consume();
         });
     }
 
-    private void handleDragDropped(DragEvent event) {
+    private void handleDragDropped(DragEvent event) throws IOException {
         File file = event.getDragboard().getFiles().get(0);
         loadMedia(file.toURI().toString());
+        if (file != null) {
+            if (!file.getName().endsWith(".mp4") &&
+                    !file.getName().endsWith(".mkv") &&
+                    !file.getName().endsWith(".avi") &&
+                    !file.getName().endsWith(".wmv") &&
+                    !file.getName().endsWith(".webm")) {
+                loadMedia(file.toURI().toString());
+            } else {
+                if (mediaPlayer != null) {
+                    mediaPlayer.stop();
+                    mediaPlayer.dispose();
+                }
+                Stage stage = (Stage) imgOpen.getScene().getWindow();
+                Scene scene = new Scene(AppRouter.getContainer(AppRouter.Routes.VIDEO));
+                stage.setScene(scene);
+                scene.setFill(Color.TRANSPARENT);
+
+                VideoSceneController videoController = (VideoSceneController) AppRouter.getController(AppRouter.Routes.VIDEO);
+                if (videoController != null) {
+                    Platform.runLater(() -> videoController.loadMedia(file.toURI().toString()));
+                }
+            }
+        }
     }
 
     public void imgVolumeOnMouseClicked(MouseEvent event) {
