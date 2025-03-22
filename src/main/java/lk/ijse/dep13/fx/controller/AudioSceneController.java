@@ -18,20 +18,17 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.dep13.fx.util.AppRouter;
-
 import java.io.File;
 import java.io.IOException;
 
 public class AudioSceneController {
-    @FXML
-    public ImageView imgClose, imgOpen, imgPlay, imgPause, imgReset, imgVolume, imgMute, imgVideoWindow;
+    @FXML public ImageView imgClose, imgOpen, imgPlay, imgPause, imgReset, imgVolume, imgMute, imgVideoWindow;
     @FXML public Label lblSong, lblDuration, lblVolume;
     @FXML public MediaView mdPreview;
     @FXML public AnchorPane root;
     @FXML public Slider sldrSeek, sldrVolume;
     public ImageView imgFolder;
     public ImageView imgAudioWindow;
-
     private MediaPlayer mediaPlayer;
     private boolean isSeeking = false;
     private double vlm = 50;
@@ -57,42 +54,6 @@ public class AudioSceneController {
         });
     }
 
-    public void imgVolumeOnMouseClicked(MouseEvent event) {
-        if (mediaPlayer != null) {
-            imgVolume.setVisible(false);
-            imgMute.setVisible(true);
-            vlm = sldrVolume.getValue();
-            sldrVolume.setValue(0);
-        }
-    }
-
-    public void imgMuteOnMouseClicked(MouseEvent mouseEvent) {
-        if (mediaPlayer != null) {
-            imgMute.setVisible(false);
-            imgVolume.setVisible(true);
-            sldrVolume.setValue(vlm);
-        }
-    }
-
-    private void setupDragAndDrop() {
-        root.setOnDragOver(event -> {
-            if (event.getDragboard().hasFiles()) {
-                event.acceptTransferModes(javafx.scene.input.TransferMode.COPY);
-            }
-            event.consume();
-        });
-
-        root.setOnDragDropped(event -> {
-            handleDragDropped(event);
-            event.consume();
-        });
-    }
-
-    private void handleDragDropped(DragEvent event) {
-        File file = event.getDragboard().getFiles().get(0);
-        loadMedia(file.toURI().toString());
-    }
-
     void loadMedia(String mediaUrl) {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -116,7 +77,7 @@ public class AudioSceneController {
             }
         });
 
-        mediaPlayer.setVolume(sldrVolume.getValue() / 100);
+        mediaPlayer.setVolume(sldrVolume.getValue());
         mediaPlayer.play();
     }
 
@@ -145,6 +106,42 @@ public class AudioSceneController {
                     Platform.runLater(() -> videoController.loadMedia(file.toURI().toString()));
                 }
             }
+        }
+    }
+
+    private void setupDragAndDrop() {
+        root.setOnDragOver(event -> {
+            if (event.getDragboard().hasFiles()) {
+                event.acceptTransferModes(javafx.scene.input.TransferMode.COPY);
+            }
+            event.consume();
+        });
+
+        root.setOnDragDropped(event -> {
+            handleDragDropped(event);
+            event.consume();
+        });
+    }
+
+    private void handleDragDropped(DragEvent event) {
+        File file = event.getDragboard().getFiles().get(0);
+        loadMedia(file.toURI().toString());
+    }
+
+    public void imgVolumeOnMouseClicked(MouseEvent event) {
+        if (mediaPlayer != null) {
+            imgVolume.setVisible(false);
+            imgMute.setVisible(true);
+            vlm = sldrVolume.getValue();
+            sldrVolume.setValue(0);
+        }
+    }
+
+    public void imgMuteOnMouseClicked(MouseEvent mouseEvent) {
+        if (mediaPlayer != null) {
+            imgMute.setVisible(false);
+            imgVolume.setVisible(true);
+            sldrVolume.setValue(vlm);
         }
     }
 

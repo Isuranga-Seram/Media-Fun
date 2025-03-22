@@ -18,7 +18,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.dep13.fx.util.AppRouter;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -54,23 +53,6 @@ public class VideoSceneController {
         });
     }
 
-    public void imgVolumeOnMouseClicked(MouseEvent event) {
-        if (mediaPlayer != null) {
-            imgVolume.setVisible(false);
-            imgMute.setVisible(true);
-            vlm = sldrVolume.getValue();
-            sldrVolume.setValue(0);
-        }
-    }
-
-    public void imgMuteOnMouseClicked(MouseEvent mouseEvent) {
-        if (mediaPlayer != null) {
-            imgMute.setVisible(false);
-            imgVolume.setVisible(true);
-            sldrVolume.setValue(vlm);
-        }
-    }
-
     private void setupDragAndDrop() {
         root.setOnDragOver(event -> {
             if (event.getDragboard().hasFiles()) {
@@ -83,11 +65,6 @@ public class VideoSceneController {
             handleDragDropped(event);
             event.consume();
         });
-    }
-
-    private void handleDragDropped(DragEvent event) {
-        File file = event.getDragboard().getFiles().get(0);
-        loadMedia(file.toURI().toString());
     }
 
     void loadMedia(String mediaUrl) {
@@ -113,19 +90,16 @@ public class VideoSceneController {
             }
         });
 
-        mediaPlayer.setVolume(sldrVolume.getValue() / 100);
+        mediaPlayer.setVolume(sldrVolume.getValue());
         mediaPlayer.play();
     }
 
+    private void handleDragDropped(DragEvent event) {
+        File file = event.getDragboard().getFiles().get(0);
+        loadMedia(file.toURI().toString());
+    }
+
     public void imgOpenOnMouseClicked(MouseEvent event) throws IOException {
-        /*FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav", "*.flv", "*.aac"));
-        File file = fileChooser.showOpenDialog(null);
-        if (file != null) {
-            loadMedia(file.toURI().toString());
-        }*/
-
-
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Media Files", "*.mp4", "*.mkv", "*.avi", "*.wmv", "*.webm", "*.mp3", "*.wav", "*.flv", "*.aac"));
 
@@ -149,6 +123,23 @@ public class VideoSceneController {
                     Platform.runLater(() -> audioController.loadMedia(file.toURI().toString()));
                 }
             }
+        }
+    }
+
+    public void imgVolumeOnMouseClicked(MouseEvent event) {
+        if (mediaPlayer != null) {
+            imgVolume.setVisible(false);
+            imgMute.setVisible(true);
+            vlm = sldrVolume.getValue();
+            sldrVolume.setValue(0);
+        }
+    }
+
+    public void imgMuteOnMouseClicked(MouseEvent mouseEvent) {
+        if (mediaPlayer != null) {
+            imgMute.setVisible(false);
+            imgVolume.setVisible(true);
+            sldrVolume.setValue(vlm);
         }
     }
 
